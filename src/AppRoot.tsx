@@ -1,5 +1,5 @@
 import React from 'react';
-import {ResizableCard} from 'components';
+import {Card} from 'components';
 
 export default function AppRoot() {
   return (
@@ -11,7 +11,7 @@ export default function AppRoot() {
         border: 'black solid'
       }}
     >
-      <ResizableCard>Stuff but resizable this time</ResizableCard>
+      <Card>Stuff but resizable this time</Card>
     </div>
   );
 }

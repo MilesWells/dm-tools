@@ -20,18 +20,7 @@ const createStyles = makeStyles<any, Partial<CardProps>>({
   }
 });
 
-export const Card: React.FC<CardProps> = ({
-  children,
-  height = INITIAL_HEIGHT,
-  width = INITIAL_WIDTH
-}) => {
-  const classes = createStyles({height, width});
-  return <MuiCard className={classes.rootCard}>{children}</MuiCard>;
-};
-
-export const ResizableCard: React.FC<React.PropsWithChildren<{}>> = ({
-  children
-}) => {
+export const Card: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
   const [height, setHeight] = useState(INITIAL_HEIGHT);
   const [width, setWidth] = useState(INITIAL_WIDTH);
 

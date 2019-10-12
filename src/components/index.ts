@@ -1,1 +1,1 @@
-export {Card, ResizableCard} from './Card';
+export {Card} from './Card';
