@@ -1,5 +1,11 @@
 import React, {useState, useCallback} from 'react';
-import {makeStyles, Card as MuiCard} from '@material-ui/core';
+import {
+  makeStyles,
+  Card as MuiCard,
+  CardHeader,
+  CardContent
+} from '@material-ui/core';
+import {DragHandle} from '@material-ui/icons';
 import {Resizable} from 're-resizable';
 
 const INITIAL_WIDTH = 400;
@@ -40,20 +46,23 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
   x = INITIAL_X,
   y = INITIAL_Y
 }) => {
+  // width and height of resizable container
   const [resizableHeight, setResizableHeight] = useState(height);
   const [resizableWidth, setResizableWidth] = useState(width);
 
+  // width and height of card
   const [cardHeight, setCardHeight] = useState(height);
   const [cardWidth, setCardWidth] = useState(width);
 
-  const [cardX, setCardX] = useState(x);
-  const [cardY, setCardY] = useState(y);
+  // card x and y
+  const [resizableX, setResizableX] = useState(x);
+  const [resizableY, setResizableY] = useState(y);
 
   const classes = createStyles({
     height: cardHeight,
     width: cardWidth,
-    x: cardX,
-    y: cardY
+    x: resizableX,
+    y: resizableY
   });
 
   const resize = useCallback(
@@ -85,7 +94,10 @@ export const Card: React.FC<React.PropsWithChildren<CardProps>> = ({
       onResize={(_, __, ___, delta) => resizeCard(delta)}
       onResizeStop={(_, __, ___, delta) => resize(delta)}
     >
-      <MuiCard className={classes.rootCard}>{children}</MuiCard>
+      <MuiCard className={classes.rootCard}>
+        <CardHeader action={<DragHandle />} title='Header' />
+        <CardContent>{children}</CardContent>
+      </MuiCard>
     </Resizable>
   );
 };
