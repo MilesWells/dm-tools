@@ -39,8 +39,8 @@ export const Card: React.FC<React.PropsWithChildren<{}>> = ({children}) => {
 
   const resizeCard = useCallback(
     (delta: {height: number; width: number}) => {
-      setCardHeight(() => height + delta.height);
-      setCardWidth(() => width + delta.width);
+      setCardHeight(height + delta.height);
+      setCardWidth(width + delta.width);
     },
     [setCardWidth, setCardHeight, height, width]
   );
